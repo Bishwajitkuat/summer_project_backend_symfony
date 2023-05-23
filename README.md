@@ -30,8 +30,9 @@ note: if any of the above mentioned port is used by any other service in your pc
 - ending_datetime: (datetime)
 - event_description: (text)
 - keywords: [text]
-- speakers: [{}]
-- subevents: [{}] ???
+- speakers: [{object will come from speakers table}]
+- subevents: [{object will come from subevents table}] ??? should it be included into the event?
+- participents : [{id, name, email, phone, organization *** it will come if registration is implemented}] list of user who registered for the event ???
 - created_at
 - updated_at
 
