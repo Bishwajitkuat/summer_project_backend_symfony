@@ -5,8 +5,8 @@ service name and port numbers as your need.
 ## Installation
 
 ```shell
-git clone
-cd summerProjectDB
+git clone https://github.com/Bishwajitkuat/summer_project_backend_symfony.git
+cd summer_project_backend_symfony
 cp .env.example .env && cp web/.env.example web/.env
 docker compose up -d
 cd web/
