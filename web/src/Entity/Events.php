@@ -17,7 +17,7 @@ class Events
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 500, nullable: true)]
     private ?string $place = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
@@ -26,19 +26,16 @@ class Events
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $end_date = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    #[ORM\Column]
     private array $keywords = [];
 
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
-    private array $subevents = [];
-
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    #[ORM\Column]
     private array $speakers = [];
 
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    #[ORM\Column]
     private array $participents = [];
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
@@ -69,7 +66,7 @@ class Events
         return $this->place;
     }
 
-    public function setPlace(string $place): self
+    public function setPlace(?string $place): self
     {
         $this->place = $place;
 
@@ -105,7 +102,7 @@ class Events
         return $this->description;
     }
 
-    public function setDescription(string $description): self
+    public function setDescription(?string $description): self
     {
         $this->description = $description;
 
@@ -117,21 +114,9 @@ class Events
         return $this->keywords;
     }
 
-    public function setKeywords(?array $keywords): self
+    public function setKeywords(array $keywords): self
     {
         $this->keywords = $keywords;
-
-        return $this;
-    }
-
-    public function getSubevents(): array
-    {
-        return $this->subevents;
-    }
-
-    public function setSubevents(?array $subevents): self
-    {
-        $this->subevents = $subevents;
 
         return $this;
     }
@@ -141,7 +126,7 @@ class Events
         return $this->speakers;
     }
 
-    public function setSpeakers(?array $speakers): self
+    public function setSpeakers(array $speakers): self
     {
         $this->speakers = $speakers;
 
@@ -153,7 +138,7 @@ class Events
         return $this->participents;
     }
 
-    public function setParticipents(?array $participents): self
+    public function setParticipents(array $participents): self
     {
         $this->participents = $participents;
 

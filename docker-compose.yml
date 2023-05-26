@@ -31,7 +31,7 @@ services:
     networks:
       - dev
 
-  minipojectphp:
+  summerproject:
     build: php
     ports:
       - "8008:80"
