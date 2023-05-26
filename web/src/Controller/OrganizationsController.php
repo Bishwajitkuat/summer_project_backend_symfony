@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Organizations;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -31,5 +32,23 @@ function getAllOrganizations(ManagerRegistry $doctrine): Response
         ]);
     }
     return $this->json($data);
+}
+#[Route('/postToOrganizations', name:'postToOrganizations', methods:['POST'])]
+function postToOrganizations(Request $request, ManagerRegistry $doctrine): Response
+    {
+    $em = $doctrine->getManager();
+    $newOrganization = new Organizations();
+    $content = json_decode($request->getContent());
+
+    $newOrganization->setName($content->name);
+    $newOrganization->setImage($content->image);
+    $newOrganization->setLocatiion($content->locatiion);
+    $newOrganization->setDescription($content->description);
+    $newOrganization->setEmail($content->email);
+    $newOrganization->setPhone($content->phone);
+    $newOrganization->setCreatedAt(date_create());
+    $em->persist($newOrganization);
+    $em->flush();
+    return $this->json("The organization is saved successfully!!!");
 }
 }
