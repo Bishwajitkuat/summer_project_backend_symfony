@@ -52,7 +52,7 @@ function postToEvents(Request $request, ManagerRegistry $doctrine): Response
     $newPost->setCreatedAt(date_create());
     $em->persist($newPost);
     $em->flush();
-    return $this->json("The event is saved successfull!!!");
+    return $this->json("The event is saved successfully!!!");
 }
 #[Route('/getOneEvent/{id}', name:'getOneEvent', methods:['GET'])]
 function getOneEvents($id, ManagerRegistry $doctrine): Response
@@ -73,6 +73,26 @@ function getOneEvents($id, ManagerRegistry $doctrine): Response
         'updated_at' => $event->getUpdatedAt(),
     ];
     return $this->json($data);
+}
+#[Route("/updateEvent/{id}", name:"updateEvent", methods:['PATCH'])]
+function updateEvents($id, Request $request, ManagerRegistry $doctrine): Response
+    {
+    $em = $doctrine->getManager();
+    $updatePost = $em->getRepository(Events::class)->find($id);
+    $content = json_decode($request->getContent());
+
+    $updatePost->setTitle($content->title);
+    $updatePost->setPlace($content->place);
+    $updatePost->setStartDate(date_create(json_decode($content->start_date)));
+    $updatePost->setEndDate(date_create(json_decode($content->end_date)));
+    $updatePost->setDescription($content->description);
+    $updatePost->setKeywords([...$content->keywords]);
+    $updatePost->setSpeakers([...$content->speakers]);
+    $updatePost->setParticipents([...$content->participents]);
+    $updatePost->setUpdatedAt(date_create());
+    $em->persist($updatePost);
+    $em->flush();
+    return $this->json("The event is updated successfully!!!");
 }
 
 }
