@@ -79,8 +79,10 @@ function updateEvents($id, Request $request, ManagerRegistry $doctrine): Respons
     {
     $em = $doctrine->getManager();
     $updatePost = $em->getRepository(Events::class)->find($id);
+    if (!$updatePost) {
+        return $this->json("Id: " . $id . ", does not exist in the database");
+    }
     $content = json_decode($request->getContent());
-
     $updatePost->setTitle($content->title);
     $updatePost->setPlace($content->place);
     $updatePost->setStartDate(date_create(json_decode($content->start_date)));
@@ -94,5 +96,16 @@ function updateEvents($id, Request $request, ManagerRegistry $doctrine): Respons
     $em->flush();
     return $this->json("The event is updated successfully!!!");
 }
-
+#[Route('/deleteEvent/{id}', name:'deleteEvent', methods:['DELETE'])]
+function deleteEvent($id, ManagerRegistry $doctrine): Response
+    {
+    $em = $doctrine->getManager();
+    $deleteEvent = $em->getRepository(Events::class)->find($id);
+    if (!$deleteEvent) {
+        return $this->json("Id:" . $id . ", does not exists in the database");
+    }
+    $em->remove($deleteEvent);
+    $em->flush();
+    return $this->json("The event with id: " . $id . " is deleted successfully!!!");
+}
 }
