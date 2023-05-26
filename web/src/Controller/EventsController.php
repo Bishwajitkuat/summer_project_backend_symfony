@@ -52,6 +52,27 @@ function postToEvents(Request $request, ManagerRegistry $doctrine): Response
     $newPost->setCreatedAt(date_create());
     $em->persist($newPost);
     $em->flush();
-    return $this->json("data saved");
+    return $this->json("The event is saved successfull!!!");
 }
+#[Route('/getOneEvent/{id}', name:'getOneEvent', methods:['GET'])]
+function getOneEvents($id, ManagerRegistry $doctrine): Response
+    {
+    $em = $doctrine->getManager();
+    $event = $em->getRepository(Events::class)->find($id);
+    $data = [
+        'id' => $event->getId(),
+        'title' => $event->getTitle(),
+        'place' => $event->getPlace(),
+        'start_date' => $event->getStartDate(),
+        'end_date' => $event->getEndDate(),
+        'description' => $event->getDescription(),
+        'keywords' => $event->getKeywords(),
+        'speakers' => $event->getSpeakers(),
+        'participents' => $event->getParticipents(),
+        'created_at' => $event->getCreatedAt(),
+        'updated_at' => $event->getUpdatedAt(),
+    ];
+    return $this->json($data);
+}
+
 }
