@@ -37,18 +37,40 @@ function getAllOrganizations(ManagerRegistry $doctrine): Response
 function postToOrganizations(Request $request, ManagerRegistry $doctrine): Response
     {
     $em = $doctrine->getManager();
-    $newOrganization = new Organizations();
+    $newOrg = new Organizations();
     $content = json_decode($request->getContent());
 
-    $newOrganization->setName($content->name);
-    $newOrganization->setImage($content->image);
-    $newOrganization->setLocatiion($content->locatiion);
-    $newOrganization->setDescription($content->description);
-    $newOrganization->setEmail($content->email);
-    $newOrganization->setPhone($content->phone);
-    $newOrganization->setCreatedAt(date_create());
-    $em->persist($newOrganization);
+    $newOrg->setName($content->name);
+    $newOrg->setImage($content->image);
+    $newOrg->setLocatiion($content->locatiion);
+    $newOrg->setDescription($content->description);
+    $newOrg->setEmail($content->email);
+    $newOrg->setPhone($content->phone);
+    $newOrg->setCreatedAt(date_create());
+    $em->persist($newOrg);
     $em->flush();
     return $this->json("The organization is saved successfully!!!");
+}
+#[Route('/getOneOrganization/{id}', name:'getOneOrganization', methods:['GET'])]
+function getOneOrganization($id, Request $request, ManagerRegistry $doctrine)
+    {
+    $em = $doctrine->getManager();
+    $org = $em->getRepository(Organizations::class)->find($id);
+    if (!$org) {
+        return $this->json("no data found with id: " . $id);
+    }
+
+    $data = [
+        'di' => $org->getId(),
+        'name' => $org->getName(),
+        'image' => $org->getImage(),
+        'locatiion' => $org->getLocatiion(),
+        'description' => $org->getDescription(),
+        'email' => $org->getEmail(),
+        'phone' => $org->getPhone(),
+        'created_at' => $org->getCreatedAt(),
+        'updated_at' => $org->getUpdatedAt(),
+    ];
+    return $this->json($data);
 }
 }
