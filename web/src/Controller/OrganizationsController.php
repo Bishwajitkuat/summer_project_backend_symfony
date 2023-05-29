@@ -73,4 +73,37 @@ function getOneOrganization($id, Request $request, ManagerRegistry $doctrine)
     ];
     return $this->json($data);
 }
+#[Route("/updateOrganization/{id}", name:"updateOrganization", methods:['PATCH'])]
+function updateOrganization($id, Request $request, ManagerRegistry $doctrine): Response
+    {
+    $em = $doctrine->getManager();
+    $updateOrg = $em->getRepository(Organizations::class)->find($id);
+    if (!$updateOrg) {
+        return $this->json("Id: " . $id . ", does not exist in the database");
+    }
+    $content = json_decode($request->getContent());
+
+    $updateOrg->setName($content->name);
+    $updateOrg->setImage($content->image);
+    $updateOrg->setLocatiion($content->locatiion);
+    $updateOrg->setDescription($content->description);
+    $updateOrg->setEmail($content->email);
+    $updateOrg->setPhone($content->phone);
+    $updateOrg->setUpdatedAt(date_create());
+    $em->persist($updateOrg);
+    $em->flush();
+    return $this->json("The event is updated successfully!!!");
+}
+#[Route('/deleteOrganization/{id}', name:'deleteOrganization', methods:['DELETE'])]
+function deleteOrganization($id, ManagerRegistry $doctrine): Response
+    {
+    $em = $doctrine->getManager();
+    $deleteOrg = $em->getRepository(Organizations::class)->find($id);
+    if (!$deleteOrg) {
+        return $this->json("Id:" . $id . ", does not exists in the database");
+    }
+    $em->remove($deleteOrg);
+    $em->flush();
+    return $this->json("The event with id: " . $id . " is deleted successfully!!!");
+}
 }
