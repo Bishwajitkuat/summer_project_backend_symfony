@@ -28,6 +28,7 @@ function getAllOrganizations(ManagerRegistry $doctrine): Response
             "phone" => $org->getPhone(),
             "created_at" => $org->getCreatedAt(),
             "updated_at" => $org->getUpdatedAt(),
+            "address" => $org->getAddress(),
 
         ]);
     }
@@ -47,6 +48,7 @@ function postToOrganizations(Request $request, ManagerRegistry $doctrine): Respo
     $newOrg->setEmail($content->email);
     $newOrg->setPhone($content->phone);
     $newOrg->setCreatedAt(date_create());
+    $newOrg->setAddress($content->address);
     $em->persist($newOrg);
     $em->flush();
     return $this->json("The organization is saved successfully!!!");
@@ -70,6 +72,7 @@ function getOneOrganization($id, ManagerRegistry $doctrine)
         'phone' => $org->getPhone(),
         'created_at' => $org->getCreatedAt(),
         'updated_at' => $org->getUpdatedAt(),
+        'address' => $org->getAddress(),
     ];
     return $this->json($data);
 }
@@ -90,6 +93,7 @@ function updateOrganization($id, Request $request, ManagerRegistry $doctrine): R
     $updateOrg->setEmail($content->email);
     $updateOrg->setPhone($content->phone);
     $updateOrg->setUpdatedAt(date_create());
+    $updateOrg->setAddress($content->address);
     $em->persist($updateOrg);
     $em->flush();
     return $this->json("The organization is updated successfully!!!");

@@ -4,7 +4,7 @@ USE summerProjectDB;
 
 
 CREATE TABLE `doctrine_migration_versions` (
-  `version` varchar(191) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `version` varchar(191) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
   `executed_at` datetime DEFAULT NULL,
   `execution_time` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
@@ -15,7 +15,9 @@ CREATE TABLE `doctrine_migration_versions` (
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
 ('DoctrineMigrations\\Version20230525151630', '2023-05-25 15:16:55', 24),
-('DoctrineMigrations\\Version20230526185931', '2023-05-26 18:59:52', 35);
+('DoctrineMigrations\\Version20230526185931', '2023-05-26 18:59:52', 35),
+('DoctrineMigrations\\Version20230529164510', '2023-05-29 16:45:25', 35),
+('DoctrineMigrations\\Version20230530064259', '2023-05-30 06:43:19', 29);
 
 -- --------------------------------------------------------
 
@@ -25,11 +27,11 @@ INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_
 
 CREATE TABLE `events` (
   `id` int NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `place` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `place` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `start_date` datetime DEFAULT NULL,
   `end_date` datetime DEFAULT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci,
+  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `keywords` json NOT NULL,
   `speakers` json NOT NULL,
   `participents` json NOT NULL,
@@ -55,25 +57,59 @@ INSERT INTO `events` (`id`, `title`, `place`, `start_date`, `end_date`, `descrip
 
 CREATE TABLE `organizations` (
   `id` int NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `locatiion` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description` longtext COLLATE utf8mb4_unicode_ci,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `locatiion` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime DEFAULT NULL
+  `updated_at` datetime DEFAULT NULL,
+  `address` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `organizations`
 --
 
-INSERT INTO `organizations` (`id`, `name`, `image`, `locatiion`, `description`, `email`, `phone`, `created_at`, `updated_at`) VALUES
-(1, 'test 1', 'test 1', 'test 1', 'test 1', 'test 1', 'test 1', '2023-05-26 01:32:17', NULL),
-(2, 'test 1', 'test 1', 'test 1', 'test 1', 'test 1', 'test 1', '2023-05-26 20:00:01', NULL),
-(3, 'test 1', 'test 1', 'test 1', 'test 1', 'test 1', 'test 1', '2023-05-26 20:00:36', NULL),
-(4, 'test 1', 'test 1', 'test 1', 'test 1', 'test 1', 'test 1', '2023-05-26 20:00:48', NULL);
+INSERT INTO `organizations` (`id`, `name`, `image`, `locatiion`, `description`, `email`, `phone`, `created_at`, `updated_at`, `address`) VALUES
+(1, 'test 1 update', 'test 1 update', 'test 1 update', 'test 1 update', 'test 1 update', 'test 1 update', '2023-05-26 01:32:17', '2023-05-29 15:39:11', NULL),
+(2, 'test 1 update', 'test 1 update', 'test 1 update', 'test 1 update', 'test 1 update', 'test 1 update', '2023-05-26 20:00:01', '2023-05-29 15:26:37', NULL),
+(4, 'test 1', 'test 1', 'test 1', 'test 1', 'test 1', 'test 1', '2023-05-26 20:00:48', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `speakers`
+--
+
+CREATE TABLE `speakers` (
+  `id` int NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `organizations` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
+  `role` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `location` varchar(500) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` longtext COLLATE utf8mb4_unicode_ci,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `linkedin` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `twitter` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `facebook` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `speakers`
+--
+
+INSERT INTO `speakers` (`id`, `name`, `image`, `organizations`, `role`, `location`, `description`, `email`, `phone`, `linkedin`, `twitter`, `facebook`, `created_at`, `updated_at`) VALUES
+(1, 'Test Speaker 1 update', 'Test Speaker 1 update', 'a:2:{i:0;s:21:\"Test Speaker 1 update\";i:1;O:8:\"stdClass\":1:{s:4:\"name\";s:5:\"hello\";}}', 'Test Speaker 1 update', 'Test Speaker 1 update', 'Test Speaker 1 update', 'Test Speaker 1 update', 'Test Speaker 1 update', 'Test Speaker 1 update', 'Test Speaker 1 update', 'Test Speaker 1 update', '2023-05-30 03:52:31', '2023-05-30 06:31:09'),
+(2, 'Test Speaker 1', 'Test Speaker 1', 'a:1:{i:0;s:14:\"Test Speaker 1\";}', 'Test Speaker 1', 'Test Speaker 1', 'Test Speaker 1', 'Test Speaker 1', 'Test Speaker 1', 'Test Speaker 1', 'Test Speaker 1', 'Test Speaker 1', '2023-05-30 03:54:56', NULL),
+(3, 'Test Speaker 1', 'Test Speaker 1', 'a:1:{i:0;s:14:\"Test Speaker 1\";}', 'Test Speaker 1', 'Test Speaker 1', 'Test Speaker 1', 'Test Speaker 1', 'Test Speaker 1', 'Test Speaker 1', 'Test Speaker 1', 'Test Speaker 1', '2023-05-30 03:59:43', NULL),
+(4, 'Test Speaker 1', 'Test Speaker 1', 'a:2:{i:0;s:14:\"Test Speaker 1\";i:1;O:8:\"stdClass\":1:{s:4:\"name\";s:5:\"hello\";}}', 'Test Speaker 1', 'Test Speaker 1', 'Test Speaker 1', 'Test Speaker 1', 'Test Speaker 1', 'Test Speaker 1', 'Test Speaker 1', 'Test Speaker 1', '2023-05-30 04:00:34', NULL),
+(5, 'Test Speaker 1', 'Test Speaker 1', 'a:2:{i:0;s:14:\"Test Speaker 1\";i:1;O:8:\"stdClass\":1:{s:4:\"name\";s:5:\"hello\";}}', 'Test Speaker 1', 'Test Speaker 1', 'Test Speaker 1', 'Test Speaker 1', 'Test Speaker 1', 'Test Speaker 1', 'Test Speaker 1', 'Test Speaker 1', '2023-05-30 04:03:45', NULL);
 
 --
 -- Indexes for dumped tables
@@ -98,6 +134,12 @@ ALTER TABLE `organizations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `speakers`
+--
+ALTER TABLE `speakers`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -111,5 +153,11 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT for table `organizations`
 --
 ALTER TABLE `organizations`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `speakers`
+--
+ALTER TABLE `speakers`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
