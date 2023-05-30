@@ -52,7 +52,7 @@ function postToOrganizations(Request $request, ManagerRegistry $doctrine): Respo
     return $this->json("The organization is saved successfully!!!");
 }
 #[Route('/getOneOrganization/{id}', name:'getOneOrganization', methods:['GET'])]
-function getOneOrganization($id, Request $request, ManagerRegistry $doctrine)
+function getOneOrganization($id, ManagerRegistry $doctrine)
     {
     $em = $doctrine->getManager();
     $org = $em->getRepository(Organizations::class)->find($id);
@@ -92,7 +92,7 @@ function updateOrganization($id, Request $request, ManagerRegistry $doctrine): R
     $updateOrg->setUpdatedAt(date_create());
     $em->persist($updateOrg);
     $em->flush();
-    return $this->json("The event is updated successfully!!!");
+    return $this->json("The organization is updated successfully!!!");
 }
 #[Route('/deleteOrganization/{id}', name:'deleteOrganization', methods:['DELETE'])]
 function deleteOrganization($id, ManagerRegistry $doctrine): Response
