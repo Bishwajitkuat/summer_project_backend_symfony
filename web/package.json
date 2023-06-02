@@ -6,7 +6,7 @@
         "@hotwired/stimulus": "^3.2.1",
         "@symfony/stimulus-bridge": "^3.2.2",
         "@symfony/ux-react": "file:vendor/symfony/ux-react/assets",
-        "@symfony/webpack-encore": "^4.0.0",
+        "@symfony/webpack-encore": "^4.3.0",
         "core-js": "^3.23.0",
         "regenerator-runtime": "^0.13.9",
         "sass": "^1.62.1",
@@ -19,8 +19,6 @@
     "scripts": {
         "dev-server": "encore dev-server",
         "dev": "encore dev",
-        "encore-dev": "encore dev --watch",
-        "encore": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress"
     },
