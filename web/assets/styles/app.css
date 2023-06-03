@@ -1,0 +1,43 @@
+/* body {
+    background-color: yellow;
+}
+
+.container {
+    background-color: lightblue;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;800&display=swap');
+
+:root {
+    --c-purple: #69023B;
+    /* For backgrounds and Headers when light background*/
+    --c-almond: #EBDED1;
+    /*  for Headers and menu when purple background and for highlited blocks background*/
+    --c-white: #F8F9FA;
+    /* Main page BG */
+    --c-black: #000;
+    /* regular text (h4, p... )  */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nanum Gothic', sans-serif;
+
+}
+
+#root {
+    background: var(--c-white);
+}
+
+body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
