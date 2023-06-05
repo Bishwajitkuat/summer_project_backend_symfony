@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+date_default_timezone_set("Europe/Helsinki");
+
 class EventsController extends AbstractController
 {
     #[Route('/getAllEvents', name:'getAllEvents', methods:['GET'])]
