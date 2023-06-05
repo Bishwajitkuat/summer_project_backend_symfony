@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
 date_default_timezone_set("Europe/Helsinki");
 
 class SeminarsController extends AbstractController
@@ -25,10 +26,10 @@ function getAllSeminars(ManagerRegistry $doctrine): Response
             'start_datetime' => $semi->getStartDatetime(),
             'end_datetime' => $semi->getEndDatetime(),
             'address' => $semi->getAddress(),
-            'busses' => $semi->getBusses(),
-            'trains' => $semi->getTrains(),
-            'trams' => $semi->getTrams(),
-            'taxis' => $semi->getTaxis(),
+            // 'busses' => $semi->getBusses(),
+            // 'trains' => $semi->getTrains(),
+            // 'trams' => $semi->getTrams(),
+            // 'taxis' => $semi->getTaxis(),
             'transport_website' => $semi->getTransportWebsite(),
             'venue_map' => $semi->getVenueMap(),
             'organizations' => $semi->getOrganizations(),
@@ -47,13 +48,13 @@ function postToSeminars(Request $request, ManagerRegistry $doctrine): Response
 
     $newSemi->setName($content->name);
     $newSemi->setAbout($content->about);
-    $newSemi->setStartDatetime(date_create(json_decode($content->start_datetime)));
-    $newSemi->setEndDatetime(date_create(json_decode($content->end_datetime)));
+    $newSemi->setStartDatetime(date_create(str_replace("T", " ", $content->start_date)));
+    $newSemi->setEndDatetime(date_create(str_replace("T", " ", $content->end_date)));
     $newSemi->setAddress($content->address);
-    $newSemi->setBusses([...$content->busses]);
-    $newSemi->setTrains([...$content->trains]);
-    $newSemi->setTrams([...$content->trams]);
-    $newSemi->setTaxis([...$content->taxis]);
+    // $newSemi->setBusses([...$content->busses]);
+    // $newSemi->setTrains([...$content->trains]);
+    // $newSemi->setTrams([...$content->trams]);
+    // $newSemi->setTaxis([...$content->taxis]);
     $newSemi->setTransportWebsite($content->transport_website);
     $newSemi->setVenueMap($content->venue_map);
     $newSemi->setOrganizations([...$content->organizations]);
@@ -79,10 +80,10 @@ function getOneSeminar($id, ManagerRegistry $doctrine)
         'start_datetime' => $semi->getStartDatetime(),
         'end_datetime' => $semi->getEndDatetime(),
         'address' => $semi->getAddress(),
-        'busses' => $semi->getBusses(),
-        'trains' => $semi->getTrains(),
-        'trams' => $semi->getTrams(),
-        'taxis' => $semi->getTaxis(),
+        // 'busses' => $semi->getBusses(),
+        // 'trains' => $semi->getTrains(),
+        // 'trams' => $semi->getTrams(),
+        // 'taxis' => $semi->getTaxis(),
         'transport_website' => $semi->getTransportWebsite(),
         'venue_map' => $semi->getVenueMap(),
         'organizations' => $semi->getOrganizations(),
@@ -102,13 +103,13 @@ function updateSeminar($id, Request $request, ManagerRegistry $doctrine): Respon
 
     $updateSemi->setName($content->name);
     $updateSemi->setAbout($content->about);
-    $updateSemi->setStartDatetime(date_create(json_decode($content->start_datetime)));
-    $updateSemi->setEndDatetime(date_create(json_decode($content->end_datetime)));
+    $updateSemi->setStartDatetime(date_create(str_replace("T", " ", $content->start_date)));
+    $updateSemi->setStartDatetime(date_create(str_replace("T", " ", $content->start_date)));
     $updateSemi->setAddress($content->address);
-    $updateSemi->setBusses([...$content->busses]);
-    $updateSemi->setTrains([...$content->trains]);
-    $updateSemi->setTrams([...$content->trams]);
-    $updateSemi->setTaxis([...$content->taxis]);
+    // $updateSemi->setBusses([...$content->busses]);
+    // $updateSemi->setTrains([...$content->trains]);
+    // $updateSemi->setTrams([...$content->trams]);
+    // $updateSemi->setTaxis([...$content->taxis]);
     $updateSemi->setTransportWebsite($content->transport_website);
     $updateSemi->setVenueMap($content->venue_map);
     $updateSemi->setOrganizations([...$content->organizations]);
