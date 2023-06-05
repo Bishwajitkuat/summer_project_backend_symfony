@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;800&display=swap');
+
+:root {
+    --c-purple: #69023B;
+    /* For backgrounds and Headers when light background*/
+    --c-almond: #EBDED1;
+    /*  for Headers and menu when purple background and for highlited blocks background*/
+    --c-white: #F8F9FA;
+    /* Main page BG */
+    --c-black: #000;
+    /* regular text (h4, p... )  */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nanum Gothic', sans-serif;
+
+}
+
+#root {
+    background: var(--c-white);
+}
+
+body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
+
+.twig_header {
+    height: 80px;
+    width: auto;
+    background-color: var(--c-purple);
+    color: var(--c-almond);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.twig_footer {
+    height: auto;
+    width: 100%;
+    bottom: 0;
+}
+
+.login_buttom {
+    height: 72vh;
+    width: auto;
+}
+
+.reset_buttom {
+    height: 64vh;
+    width: auto;
+}

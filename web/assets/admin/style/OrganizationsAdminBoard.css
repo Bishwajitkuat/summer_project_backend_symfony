@@ -1,0 +1,9 @@
+.orgAdminBoardCard {
+  display: grid;
+  grid-template-columns: 3fr 3fr 3fr 3fr 1fr;
+  border: 2px solid black;
+  padding: 2rem;
+}
+.orgAdminBoardCardImg {
+  width: 100%;
+}

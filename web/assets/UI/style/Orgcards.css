@@ -1,0 +1,19 @@
+.box3 img{
+    width: 100%;
+    height: auto;
+    border: none;
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.organizationInformation {
+    font-weight: bolder;
+    color: var(--c-purple);
+}
+
+.organizationInformation button{
+    border: none;
+    background: transparent;
+    color: var(--c-purple);
+}
+
+ 

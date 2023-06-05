@@ -1,0 +1,44 @@
+.card{
+    background: var(--c-almond);
+    color: var(--c-purple);
+    height: auto;
+    width: calc(360px - 2rem);
+    margin: 2rem 1rem;
+    border-radius: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center; 
+    border: 1px solid var(--c-purple);
+}
+.detail{
+    margin: 1rem;
+}
+h2{
+    margin: 0;
+}
+.cardInfo h4{
+    margin: 8px auto;
+    color: var(--c-purple);
+    
+}
+
+.textBox{
+    margin: 1rem 0rem;
+}
+.ButtonLink{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.linkToCard{
+width: 120px;
+height: 30px;
+border-radius: 5px;
+font-size: 1rem;
+font-weight: 600;
+background: var(--c-purple );
+color: var(--c-almond);
+border: solid 2px var(--c-purple);
+}

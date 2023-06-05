@@ -1,0 +1,44 @@
+.orgDetail{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: calc(100vh - 13rem);
+    margin: 2rem auto;
+}
+
+.cont{
+    height: auto;
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    background:var(--c-almond);
+    border: solid 1px var(--c-purple);
+    border-radius: 0.5rem; 
+   padding: 1rem;
+
+}
+
+.orgDetail img{
+    height: 20rem;
+    width: 20rem;
+    border-radius: 0.5rem; 
+    margin-top: 3rem;        
+}
+
+.orgDetail h2, .orgDetail h1{
+    color: var(--c-purple);
+}
+
+.desc, .contact{
+    color: var(--c-purple);
+}
+
+.contact h4{
+    padding-top: 1rem;
+
+}
+
+.desc h2{
+    margin-bottom: 0.5rem;
+}
+

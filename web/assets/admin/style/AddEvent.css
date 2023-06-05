@@ -1,0 +1,80 @@
+.form-wrapper{
+    margin: 0 auto;
+    width: 400px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 5rem;
+}
+
+.form-wrapper h2{
+    margin: 2rem auto;
+
+}
+  
+form div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2rem ;    
+}
+.checkBoxline{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 1rem;
+}
+
+.dateTime{
+    margin-top: 2rem;
+    display:flex;
+    flex-direction: row;
+    margin: 0;
+    margin-left: 0.3rem; 
+}
+
+.inputTextArea{
+    height: 2rem;
+    margin-top: 0.5rem;
+    width: 300px;
+    border-radius: 5px ;
+    border: solid 2px var(--c-purple);
+    padding-left: 10px;
+}
+textarea{
+    height: 5rem;
+}
+
+label{
+    font-weight: 400;
+}
+
+h2 {
+    margin-left: 2rem;
+}
+
+
+#submit{
+    width: 120px;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    background: var(--c-purple );
+    color: var(--c-almond);
+    border: solid 2px var(--c-purple);
+    margin: 2rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.addMore{
+    padding: 10px;
+    width: 8rem; 
+    margin-left: 2rem; 
+    background:var(--c-purple);
+    border-radius: 5px;
+    color: blanchedalmond;
+}

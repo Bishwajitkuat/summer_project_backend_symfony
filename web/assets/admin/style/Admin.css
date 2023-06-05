@@ -1,0 +1,21 @@
+.wrapper{
+  min-height: calc(100vh - 13rem);
+  max-width: 1290px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.AdmButtonlist{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.insideBox{
+  height: 80px;
+  width: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

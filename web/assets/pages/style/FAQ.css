@@ -1,0 +1,137 @@
+.bg{
+    min-height: calc(70vh - 130px);
+    background: url(../../assets/faqs.jpg) no-repeat center center/cover;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: antiquewhite;
+    overflow: hidden;
+}
+
+.box1{
+    margin: 3rem;
+}
+
+.box1 h3, hr, p{
+    margin-bottom: 1rem;
+}
+    
+
+.container{
+    display: flex;
+    justify-content: space-around;
+    
+}
+.heading{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.heading h1{
+    font-size: 3rem;
+    margin-top: 2rem;
+}
+
+.cqs {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+.cqs .cq{
+    margin: 15px;
+    padding: 15px;
+    background-color: var(--c-purple);
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    
+}
+
+.cqopen{
+    margin: 15px;
+    padding: 15px;
+    background-color: var(--c-purple);
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);   
+} 
+
+.cqs .cq .cq-question{
+    position: relative;
+    font-size: 20px;
+    padding-right: 80px;
+    transition: all 0.5s ease-out;
+    
+}
+
+.cqs .cq .cq-question::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background-image: url('../../assets/d.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: all 0.5s ease-out;
+    overflow-y: hidden;
+}
+
+.cqs .cq .cq-answer{
+    opacity: 0;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: all 0.5s ease-out; 
+    position: relative; 
+   
+} 
+
+.cqs .cqopen .cq-question{
+    margin-bottom: 15px;
+    transition: all 0.5s ease-out;
+    font-size: 20px;
+    padding-right: 80px;
+}
+.cqs .cqopen .cq-answer{
+    max-height: 1000px;
+    opacity: 1;
+}
+
+.show{
+    background: var(--c-purple);
+    padding:5px;
+    color: white;
+    font-size: large;
+    border-radius: 5px;
+}
+
+@media (max-width: 760px){
+    .bg {
+        min-height: 50vh;
+    }
+
+    .box {
+        margin: 0.5rem
+    }
+
+    .box1 h3, hr, p{
+        margin-bottom: 0.5rem;
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .heading h1 {
+        font-size: 1.5rem;
+        margin-top: 0.5rem;
+    }
+}

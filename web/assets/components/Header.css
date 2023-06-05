@@ -1,0 +1,79 @@
+.header {
+    background: var(--c-purple);
+    font-weight: bold;
+    min-height: 5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.navigation{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 1290px;
+}
+.navigation li {
+    margin: 5px
+}
+.Nal{
+    text-decoration: none;
+    color: var(--c-almond);
+    width: 300px;
+}
+
+.Nal:hover{
+    text-decoration: none;
+}
+
+.NavLink:active{
+    color: var(--c-almond);
+}
+
+nav ul li a {
+    margin: 0 1rem;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+a:visited{
+    color: var(--c-almond);
+}
+
+nav ul li {
+    color: var(--c-almond);
+    display: inline-block;
+    justify-content: space-between;
+}
+.mob_menu{
+    display: none;
+}
+.desk_menu{
+    display: block;
+}
+
+@media (max-width: 1100px){
+    .desk_menu{
+        display: none;
+    }
+    .desk_menu li{
+        width: 100;
+    }
+    .desk_menu.is_open{
+        display: block;
+    }
+    .mob_menu{
+        display: block;
+    }
+    .Nal{
+        width: 130px;
+    }
+
+    .dropdownMenu li{
+        width: calc(100% - 2rem);
+        margin: 0.5rem auto;
+    }
+}

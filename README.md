@@ -13,6 +13,23 @@ cd web/
 composer install
 ```
 
+THEN FOR WEB:
+
+docker ps
+(*note: get the id from symfony_backend_symfony)
+
+docker exec -it <dockerId> /bin/sh
+
+cd web
+
+php bin/console make:migration
+php bin/console doctrine:migrations:migrate
+
+FOR REACT:
+
+npm install 
+npm run watch
+
 ## port used
 
 MySQL: 3308

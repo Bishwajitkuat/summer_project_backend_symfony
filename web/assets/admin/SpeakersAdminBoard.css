@@ -1,0 +1,10 @@
+.speakerAdminBoardCard {
+  border: 1px solid black;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 3fr 3fr 3fr 3fr 1fr;
+  gap: 2rem;
+}
+.speakersAdminBoardImg {
+  width: 100%;
+}

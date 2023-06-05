@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AccessController!{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <h1>hello {{ app.user.firstname }}</h1>
+    <a href="{{ path('app_logout') }}">Logout</a>
+
+   <p><a href="{{ path('app_home') }}">See visitor pages</a><p>
+
+   <p><a href="{{ path('app_admin') }}">admin only</a><p>
+</div>
+{% endblock %}

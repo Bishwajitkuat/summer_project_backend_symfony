@@ -4,40 +4,41 @@ namespace App\Controller;
 
 use App\Entity\Speakers;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+date_default_timezone_set("Europe/Helsinki");
 
 class SpeakersController extends AbstractController
 {
-    #[Route('/getAllSpeakers', name: 'getAllSpeakers', methods:['GET'])]
-    public function getAllSpeakers(ManagerRegistry $doctrine): Response
+    #[Route('/getAllSpeakers', name:'getAllSpeakers', methods:['GET'])]
+function getAllSpeakers(ManagerRegistry $doctrine): Response
     {
-        $em = $doctrine->getManager();
-        $speakers = $em->getRepository(Speakers::class)->findAll();
-        $data = [];
-        foreach ($speakers as $speaker) {
-            array_push($data, [
-                "id" => $speaker->getId(),
-                "name" => $speaker->getName(),
-                "image" => $speaker->getImage(),
-                "organizations" => $speaker->getOrganizations(),
-                "role" => $speaker->getRole(),
-                "location" => $speaker->getLocation(),
-                "description" => $speaker->getDescription(),
-                "email" => $speaker->getEmail(),
-                "phone" => $speaker->getPhone(),
-                "linkedin" => $speaker->getLinkedin(),
-                "twitter" => $speaker->getTwitter(),
-                "facebook" => $speaker->getFacebook(),
-                "created_at" => $speaker->getCreatedAt(),
-                "updated_at" => $speaker->getUpdatedAt(),    
-            ]);
-        }
-        return $this->json($data);
+    $em = $doctrine->getManager();
+    $speakers = $em->getRepository(Speakers::class)->findAll();
+    $data = [];
+    foreach ($speakers as $speaker) {
+        array_push($data, [
+            "id" => $speaker->getId(),
+            "name" => $speaker->getName(),
+            "image" => $speaker->getImage(),
+            "organizations" => $speaker->getOrganizations(),
+            "role" => $speaker->getRole(),
+            "location" => $speaker->getLocation(),
+            "description" => $speaker->getDescription(),
+            "email" => $speaker->getEmail(),
+            "phone" => $speaker->getPhone(),
+            "linkedin" => $speaker->getLinkedin(),
+            "twitter" => $speaker->getTwitter(),
+            "facebook" => $speaker->getFacebook(),
+            "created_at" => $speaker->getCreatedAt(),
+            "updated_at" => $speaker->getUpdatedAt(),
+        ]);
     }
-    #[Route('/postToSpeakers', name:'postToSpeakers', methods:['POST'])]
+    return $this->json($data);
+}
+#[Route('/postToSpeakers', name:'postToSpeakers', methods:['POST'])]
 function postToOrganizations(Request $request, ManagerRegistry $doctrine): Response
     {
     $em = $doctrine->getManager();
@@ -71,19 +72,19 @@ function getOneSpeaker($id, ManagerRegistry $doctrine)
 
     $data = [
         "id" => $spk->getId(),
-                "name" => $spk->getName(),
-                "image" => $spk->getImage(),
-                "organizations" => $spk->getOrganizations(),
-                "role" => $spk->getRole(),
-                "location" => $spk->getLocation(),
-                "description" => $spk->getDescription(),
-                "email" => $spk->getEmail(),
-                "phone" => $spk->getPhone(),
-                "linkedin" => $spk->getLinkedin(),
-                "twitter" => $spk->getTwitter(),
-                "facebook" => $spk->getFacebook(),
-                "created_at" => $spk->getCreatedAt(),
-                "updated_at" => $spk->getUpdatedAt(),
+        "name" => $spk->getName(),
+        "image" => $spk->getImage(),
+        "organizations" => $spk->getOrganizations(),
+        "role" => $spk->getRole(),
+        "location" => $spk->getLocation(),
+        "description" => $spk->getDescription(),
+        "email" => $spk->getEmail(),
+        "phone" => $spk->getPhone(),
+        "linkedin" => $spk->getLinkedin(),
+        "twitter" => $spk->getTwitter(),
+        "facebook" => $spk->getFacebook(),
+        "created_at" => $spk->getCreatedAt(),
+        "updated_at" => $spk->getUpdatedAt(),
     ];
     return $this->json($data);
 }
@@ -123,6 +124,6 @@ function deleteSpeaker($id, ManagerRegistry $doctrine): Response
     }
     $em->remove($deleteSpk);
     $em->flush();
-    return $this->json("The event with id: " . $id . " is deleted successfully!!!");
+    return $this->json("The speaker with id: " . $id . " is deleted successfully!!!");
 }
 }

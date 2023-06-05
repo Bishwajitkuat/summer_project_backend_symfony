@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+date_default_timezone_set("Europe/Helsinki");
+
 class EventsController extends AbstractController
 {
     #[Route('/getAllEvents', name:'getAllEvents', methods:['GET'])]
@@ -43,8 +45,8 @@ function postToEvents(Request $request, ManagerRegistry $doctrine): Response
 
     $newPost->setTitle($content->title);
     $newPost->setPlace($content->place);
-    $newPost->setStartDate(date_create(json_decode($content->start_date)));
-    $newPost->setEndDate(date_create(json_decode($content->end_date)));
+    $newPost->setStartDate(date_create(str_replace("T", " ", $content->start_date)));
+    $newPost->setEndDate(date_create(str_replace("T", " ", $content->end_date)));
     $newPost->setDescription($content->description);
     $newPost->setKeywords([...$content->keywords]);
     $newPost->setSpeakers([...$content->speakers]);
@@ -85,8 +87,8 @@ function updateEvents($id, Request $request, ManagerRegistry $doctrine): Respons
     $content = json_decode($request->getContent());
     $updatePost->setTitle($content->title);
     $updatePost->setPlace($content->place);
-    $updatePost->setStartDate(date_create(json_decode($content->start_date)));
-    $updatePost->setEndDate(date_create(json_decode($content->end_date)));
+    $updatePost->setStartDate(date_create(str_replace("T", " ", $content->start_date)));
+    $updatePost->setEndDate(date_create(str_replace("T", " ", $content->end_date)));
     $updatePost->setDescription($content->description);
     $updatePost->setKeywords([...$content->keywords]);
     $updatePost->setSpeakers([...$content->speakers]);
@@ -95,6 +97,7 @@ function updateEvents($id, Request $request, ManagerRegistry $doctrine): Respons
     $em->persist($updatePost);
     $em->flush();
     return $this->json("The event is updated successfully!!!");
+    // return $this->json(str_replace("T", " ", $content->end_date));
 }
 #[Route('/deleteEvent/{id}', name:'deleteEvent', methods:['DELETE'])]
 function deleteEvent($id, ManagerRegistry $doctrine): Response
