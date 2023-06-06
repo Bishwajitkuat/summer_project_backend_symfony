@@ -44,8 +44,8 @@ function postToSeminars(Request $request, ManagerRegistry $doctrine): Response
 
     $newSemi->setName($content->name);
     $newSemi->setAbout($content->about);
-    $newSemi->setStartDatetime(date_create(str_replace("T", " ", $content->start_date)));
-    $newSemi->setEndDatetime(date_create(str_replace("T", " ", $content->end_date)));
+    $newSemi->setStartDatetime(date_create(str_replace("T", " ", $content->start_datetime)));
+    $newSemi->setEndDatetime(date_create(str_replace("T", " ", $content->end_datetime)));
     $newSemi->setAddress($content->address);
     $newSemi->setTransportWebsite($content->transport_website);
     $newSemi->setVenueMap($content->venue_map);
@@ -92,7 +92,7 @@ function updateSeminar($id, Request $request, ManagerRegistry $doctrine): Respon
     $updateSemi->setName($content->name);
     $updateSemi->setAbout($content->about);
     $updateSemi->setStartDatetime(date_create(str_replace("T", " ", $content->start_datetime)));
-    $updateSemi->setStartDatetime(date_create(str_replace("T", " ", $content->start_datetime)));
+    $updateSemi->setEndDatetime(date_create(str_replace("T", " ", $content->end_datetime)));
     $updateSemi->setAddress($content->address);
     $updateSemi->setTransportWebsite($content->transport_website);
     $updateSemi->setVenueMap($content->venue_map);
