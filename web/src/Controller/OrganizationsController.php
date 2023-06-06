@@ -64,7 +64,7 @@ function getOneOrganization($id, ManagerRegistry $doctrine)
     }
 
     $data = [
-        'di' => $org->getId(),
+        'id' => $org->getId(),
         'name' => $org->getName(),
         'image' => $org->getImage(),
         'locatiion' => $org->getLocatiion(),
