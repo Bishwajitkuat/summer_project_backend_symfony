@@ -1,0 +1,78 @@
+{% extends 'logged.html.twig' %}
+
+{% block title %}Attendee{% endblock %}
+
+{% block body %}
+    <h1>Attendee</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ attendee.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ attendee.email }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ attendee.roles ? attendee.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ attendee.password }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ attendee.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ attendee.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Organization</th>
+                <td>{{ attendee.organization }}</td>
+            </tr>
+            <tr>
+                <th>Position</th>
+                <td>{{ attendee.position }}</td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td>{{ attendee.location }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ attendee.phone }}</td>
+            </tr>
+            {# <tr>
+                <th>Purpose</th>
+                <td>{{ attendee.purpose ? attendee.purpose|join(', ') : '' }}</td>
+            </tr> #}
+            <tr>
+                <th>Picture</th>
+                <td>{{ attendee.picture }}</td>
+            </tr>
+            <tr>
+                <th>Created_at</th>
+                <td>{{ attendee.createdAt ? attendee.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated_at</th>
+                <td>{{ attendee.updatedAt ? attendee.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>IsVerified</th>
+                <td>{{ attendee.isVerified ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_attendee_index') }}">back to list</a>
+
+    <a href="{{ path('app_attendee_edit', {'id': attendee.id}) }}">edit</a>
+
+    {{ include('attendee/_delete_form.html.twig') }}
+{% endblock %}

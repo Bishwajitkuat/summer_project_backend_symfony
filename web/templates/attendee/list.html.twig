@@ -1,0 +1,40 @@
+{% extends 'logged.html.twig' %}
+
+{% block title %}Attendee List{% endblock %}
+
+{% block body %}
+
+<div class="attendee_list">
+
+<h2> Attendee List </h2>
+     <ul>
+        {% for attendee in attendees %}
+            <li><p>Name: {{ attendee.firstname }} {{ attendee.lastname }}</p>
+            <p>Email: {{ attendee.email }}</p> </li>
+        {% endfor %}
+    </ul>
+ </div>
+{# 
+<table class="table">
+        <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+            </tr>
+        </thead>
+        <tbody>
+{% for attendee in attendees %}
+            <tr>
+                <td>{{ attendee.firstname }}</td>
+                <td>{{ attendee.lastname }}</td>
+             </tr>
+        {% else %}
+            <tr>
+                <td colspan="16">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>     #}
+
+<p style="bottom: 0; left: 0; position: absolute; margin: 2rem;"><a href="{{ path('app_access') }}">Back to Welcome Page</a><p>
+{% endblock %}
