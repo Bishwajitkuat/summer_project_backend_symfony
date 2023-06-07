@@ -67,7 +67,9 @@ code {
 
 .login,
 .access_wrapper,
-.attendee_list {
+.attendee_list,
+.admin_page,
+.admin_title_wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -123,4 +125,12 @@ code {
 
 .attendee_list li {
     margin: 1rem;
+}
+
+.admin_page p {
+    margin: 1rem;
+}
+
+.admin_title_wrapper {
+    margin: 2rem;
 }
