@@ -69,7 +69,8 @@ code {
 .access_wrapper,
 .attendee_list,
 .admin_page,
-.admin_title_wrapper {
+.admin_title_wrapper,
+.access_denied {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -105,7 +106,8 @@ code {
     color: var(--c-purple);
 }
 
-.access_wrapper h2 {
+.access_wrapper h2,
+.access_denied h2 {
     margin: 4rem 0 2rem 0;
 }
 
@@ -127,7 +129,8 @@ code {
     margin: 1rem;
 }
 
-.admin_page p {
+.admin_page p,
+.access_denied p {
     margin: 1rem;
 }
 

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="access_denied">
+  <head>
+    <title>Access Denied</title>
+  </head>
+  <body>
+    <h2>Access Denied</h2>
+    {# <p>{{ exception.message }}</p> #}
+    <p> You need to be an Admin to access this section </p>
+
+    <p><a href="{{ path('app_access') }}">Return to attendee pages</a></p>
+
+    <p><a href="{{ path('app_home') }}">Return home</a>
+    
+  </body>
+  </div>
+{% endblock %}
