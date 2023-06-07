@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;800&display=swap');
+
+:root {
+    --c-purple: #69023B;
+    /* For backgrounds and Headers when light background*/
+    --c-almond: #EBDED1;
+    /*  for Headers and menu when purple background and for highlited blocks background*/
+    --c-white: #F8F9FA;
+    /* Main page BG */
+    --c-black: #000;
+    /* regular text (h4, p... )  */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nanum Gothic', sans-serif;
+
+}
+
+#root {
+    background: var(--c-white);
+}
+
+body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
+
+.twig_header {
+    height: 80px;
+    width: auto;
+    background-color: var(--c-purple);
+    color: var(--c-almond);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.twig_header h2 {
+    color: var(--c-almond);
+}
+
+.twig_footer {
+    height: auto;
+    width: 100%;
+    bottom: 0;
+}
+
+.login_buttom {
+    height: 72vh;
+    width: auto;
+}
+
+.reset_buttom {
+    height: 64vh;
+    width: auto;
+}
+
+.login,
+.access_wrapper,
+.attendee_list,
+.admin_page,
+.admin_title_wrapper,
+.access_denied {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login_title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4rem 2rem;
+}
+
+.login input {
+    margin-bottom: 3rem;
+}
+
+.login p {
+    margin-bottom: 1rem;
+}
+
+.login button {
+    background-color: var(--c-purple);
+    color: var(--c-almond);
+    border-radius: 5px;
+    border: none;
+    height: 20px;
+    width: 60px;
+}
+
+.login button:hover {
+    background-color: var(--c-almond);
+    color: var(--c-purple);
+}
+
+.access_wrapper h2,
+.access_denied h2 {
+    margin: 4rem 0 2rem 0;
+}
+
+.access_wrapper p {
+    margin: 1rem;
+}
+
+/* .logout_logo {
+    top: 0;
+    right: 0;
+    position: absolute;
+} */
+
+.attendee_list h2 {
+    margin: 2rem;
+}
+
+.attendee_list li {
+    margin: 1rem;
+}
+
+.admin_page p,
+.access_denied p {
+    margin: 1rem;
+}
+
+.admin_title_wrapper {
+    margin: 2rem;
+}

@@ -1,0 +1,63 @@
+{% extends 'logged.html.twig' %}
+
+{% block title %}Attendee index{% endblock %}
+
+{% block body %}
+    <h1>Attendee index</h1>
+
+       <p><a href="{{ path('app_access') }}">Back to Welcome Page</a><p>
+
+       <a href="{{ path('app_attendee_new') }}">Create new</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>Password</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Organization</th>
+                <th>Position</th>
+                <th>Location</th>
+                <th>Phone</th>
+                {# <th>Purpose</th> #}
+                <th>Picture</th>
+                {# <th>Created_at</th>
+                <th>Updated_at</th> #}
+                <th>IsVerified</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for attendee in attendees %}
+            <tr>
+                <td>{{ attendee.id }}</td>
+                <td>{{ attendee.email }}</td>
+                <td>{{ attendee.roles ? attendee.roles|json_encode : '' }}</td>
+                <td>{{ attendee.password }}</td>
+                <td>{{ attendee.firstname }}</td>
+                <td>{{ attendee.lastname }}</td>
+                <td>{{ attendee.organization }}</td>
+                <td>{{ attendee.position }}</td>
+                <td>{{ attendee.location }}</td>
+                <td>{{ attendee.phone }}</td>
+                {# <td>{{ attendee.purpose ? attendee.purpose|join(', ') : '' }}</td> #}
+                <td>{{ attendee.picture }}</td>
+                {# <td>{{ attendee.createdAt ? attendee.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ attendee.updatedAt ? attendee.updatedAt|date('Y-m-d H:i:s') : '' }}</td> #}
+                <td>{{ attendee.isVerified ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_attendee_show', {'id': attendee.id}) }}">show</a>
+                    <a href="{{ path('app_attendee_edit', {'id': attendee.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="16">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
